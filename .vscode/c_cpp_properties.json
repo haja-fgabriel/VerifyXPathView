@@ -5,7 +5,9 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "C:/Users/Florin/AppData/Local/Programs/Python/Python38/include/**",
-                "C:/Users/Florin/AppData/Local/Programs/Python/Python38/libs/**"
+                "C:/Users/Florin/AppData/Local/Programs/Python/Python38/libs/**",
+                "C:/libxml2/include/**",
+                "C:/libiconv-win-build/include/**"
             ],
             "defines": [
                 "_DEBUG",
@@ -15,7 +17,7 @@
             "windowsSdkVersion": "10.0.18362.0",
             "compilerPath": "cl.exe",
             "cStandard": "c17",
-            "cppStandard": "c++11",
+            "cppStandard": "c++17",
             "intelliSenseMode": "windows-msvc-x86"
         }
     ],
