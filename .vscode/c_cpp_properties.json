@@ -16,7 +16,7 @@
             "compilerPath": "cl.exe",
             "cStandard": "c17",
             "cppStandard": "c++11",
-            "intelliSenseMode": "windows-msvc-x86",
+            "intelliSenseMode": "windows-msvc-x86"
         }
     ],
     "version": 4
