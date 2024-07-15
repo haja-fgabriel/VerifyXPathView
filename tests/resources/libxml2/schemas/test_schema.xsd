@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xd:schema xmlns:xd="http://www.w3.org/2001/XMLSchema">
+	<xd:element name="test"/>
+</xd:schema>
