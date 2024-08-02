@@ -5,6 +5,8 @@
 #include <libxml/parser.h>
 #include <libxml/xmlschemas.h>
 
+#define MSG_MAXSIZE (400)
+
 
 static PyObject* xmlReadError;
 
@@ -21,23 +23,27 @@ void libxml2_destroyXmlDoc(PyObject* capsule)
 }
 
 
-static PyObject*
+PyObject*
 libxml2_xmlschemas_load_schema(PyObject* self, PyObject* args)
 {
     char* str = NULL;
     PyObject* capsule = NULL;
-    const int maxSize = 400;
-    char msg[maxSize];
+    char msg[MSG_MAXSIZE];
 
     /* Parse arguments */
     if (!PyArg_ParseTuple(args, "s", &str)) {
         return NULL;
     }
 
+    FILE *g = NULL;
+    g = fopen("libxml2_error.log", "w");
     xmlDocPtr xmlDoc = NULL;
+    xmlInitParser();
+    xmlSetGenericErrorFunc(g, fprintf);
     xmlDoc = xmlReadFile(str, defaultEncoding, defaultOptions);
+    fclose(g);
     if (xmlDoc == NULL) {
-        snprintf(msg, maxSize, "Could not read the given XML document at given path: '%s'", str);
+        snprintf(msg, MSG_MAXSIZE, "Could not read the given XML document at given path: '%s'", str);
         PyErr_SetString(PyExc_MemoryError, msg);
         return NULL;
     }
