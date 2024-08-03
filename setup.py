@@ -27,6 +27,10 @@ LIBXML2_EXTENSIONS = [
         
         # TODO replace with more generic include directories; fix Mac support
         include_dirs=INCLUDE_DIRS.get(CURRENT_OS),
+        
+        # Arguments to produce debugging symbols on Windows
+        extra_compile_args=["/Zi", "/Od"],
+        extra_link_args=["/DEBUG"],
     )
 ]
 
@@ -59,7 +63,9 @@ setup(
         'matplotlib==3.7.5',
     ],
     extras_require={
-        "test": ["pytest"],
+        # the plugin https://github.com/microsoft/PTVS requires the deprecated function
+        # pytest.compat._translate_non_printable
+        "test": ["pytest==8.0.2"],
     },
     ext_modules=LIBXML2_EXTENSIONS,
 )
